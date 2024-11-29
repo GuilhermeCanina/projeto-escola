@@ -34,7 +34,7 @@ app.post("/login", (req, res) => {
   );
 });
 
-// Listar turmas do professor autenticado
+
 app.get("/turmas", (req, res) => {
   if (!req.session.user) return res.redirect("/index.html");
   const professorId = req.session.user.id;
@@ -48,7 +48,7 @@ app.get("/turmas", (req, res) => {
   );
 });
 
-// Criar turma
+
 app.post("/turmas", (req, res) => {
   const { nome } = req.body;
   const professorId = req.session.user.id;
@@ -62,7 +62,6 @@ app.post("/turmas", (req, res) => {
   );
 });
 
-// Logout
 app.get("/logout", (req, res) => {
   req.session.destroy(() => {
     res.redirect("/index.html");
